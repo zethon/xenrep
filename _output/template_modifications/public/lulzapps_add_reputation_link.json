@@ -1,0 +1,9 @@
+{
+    "template": "post_macros",
+    "description": "",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "data-quote-href=\"{{ link('posts/quote', $post) }}\">{{ phrase('reply') }}</a>",
+    "replace": "$0\n\n\t<a href=\"{{ link('posts/reputation', $post) }}\"\n\t   class=\"actionBar-action2 actionBar-action--report2\"\n\t   data-xf-click=\"overlay\">TEST</a>\n"
+}
