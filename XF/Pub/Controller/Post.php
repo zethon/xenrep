@@ -1,6 +1,6 @@
 <?php
 
-namespace lulapps\Rep\XF\Entity;
+namespace lulzapps\Rep\XF\Entity;
 
 class Post extends XFCP_Post
 {
