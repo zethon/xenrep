@@ -33,6 +33,11 @@ class Post extends XFCP_Post
 
     public function actionReputation(ParameterBag $params) 
     {
-        return $this->view('lulzapps:RepView', 'lulzapps_reputation_submit_overlay', []);
+        $viewParams = 
+        [
+            'post_id' => $params->post_id,
+            // 'params' => print_r($params->params())
+        ];
+        return $this->view('lulzapps:RepView', 'lulzapps_reputation_submit_overlay', $viewParams);
     }
 }
