@@ -21,7 +21,7 @@ class Setup extends AbstractSetup
         $this->schemaManager()->createTable('lulzapps_reputation', 
             function(Create $table)
             {
-                $table->addColumn('repid', 'int');
+                $table->addColumn('rep_id', 'int');
                 $table->addColumn('post_id', 'int');
                 $table->addColumn('user_id', 'int');
                 $table->addColumn('reputation', 'int');
