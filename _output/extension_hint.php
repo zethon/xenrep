@@ -6,4 +6,5 @@
 namespace lulzapps\Rep\XF\Pub\Controller
 {
 	class XFCP_Post extends \XF\Pub\Controller\Post {}
+	class XFCP_Thread extends \XF\Pub\Controller\Thread {}
 }

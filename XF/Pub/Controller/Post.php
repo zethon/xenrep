@@ -6,6 +6,40 @@ use XF\Mvc\ParameterBag;
 
 class Post extends XFCP_Post
 {
+	public function actionPreview(ParameterBag $params)
+	{
+    }
+
+    protected function assertViewablePost($postId, array $extraWith = [])
+	{
+    }
+
+	public function actionIndex(ParameterBag $params)
+	{
+        $post = $this->assertViewablePost($params->post_id);
+        print('<pre>');
+        print_r($post);
+        print('</pre>');
+
+		return $this->redirectPermanently($this->plugin('XF:Thread')->getPostLink($post));
+	}
+
+	public function actionShow(ParameterBag $params)
+	{
+        $post = $this->assertViewablePost($params->post_id);
+        print('<pre>');
+        print_r($post);
+        print('</pre>');
+
+		$viewParams = [
+			'post' => $post,
+			'thread' => $post->Thread,
+			'forum' => $post->Thread->Forum,
+			'canInlineMod' => $post->canUseInlineModeration()
+		];
+		return $this->view('XF:Post\Show', 'post', $viewParams);
+    }
+    
     public function actionEdit(ParameterBag $params)
     {
         $reply = parent::actionEdit($params);

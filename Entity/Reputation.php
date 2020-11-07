@@ -26,8 +26,11 @@ class Reputation extends \XF\Mvc\Entity\Entity
                 'Post' => 
                     [
                         'entity' => 'XF:Post',
-                        'type' => self::TO_ONE,
-                        'conditions' => 'post_id',
+                        'type' => self::TO_MANY,
+                        'conditions' => 
+                            [
+                                ['post_id', '=', '$post_id']
+                            ],
                         'primary' => true
                     ],
             ];
