@@ -14,7 +14,17 @@ class Thread extends XFCP_Thread
         $postRepo = $this->getPostRepo();
         $thread = $this->assertViewableThread($params->thread_id, $this->getThreadViewExtraWith());
         $postList = $postRepo->findPostsForThreadView($thread)->onPage($page, $perPage);
-		$posts = $postList->fetch();
+        $posts = $postList->fetch();
+        
+        // foreach ($posts AS $p)
+        // {
+        //     print('<hr/>');
+        //     print('<pre>');
+        //     print_r($p);
+        //     print('</pre>');
+        //     print('<hr/>');
+        //     break;
+        // }
 
         // print('<pre>');
         // print_r($posts);

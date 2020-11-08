@@ -28,7 +28,7 @@ class Post extends XFCP_Post
 	{
         $post = $this->assertViewablePost($params->post_id);
         print('<pre>');
-        print_r($post);
+        print_r($post); 
         print('</pre>');
 
 		$viewParams = [

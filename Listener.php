@@ -8,6 +8,14 @@ class Listener
 {
     public static function postEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
     {
+        $structure->relations['Reputation'] = 
+            [
+                'entity' => 'lulzapps\Rep:Reputation',
+                'type' => Entity::TO_MANY,
+                'conditions' => [['post_id', '=', '$post_id']],
+                'primary' => true
+            ];
+
         // print('<pre>');
         // print_r($structure);
         // print('</pre>');
@@ -28,8 +36,27 @@ class Listener
         //         'default' => false
         //     ];
 
+        // $structure->relations = 
+        //     [
+        //         'Reputation' => 
+        //             [
+        //                 'entity' => 'lulzapps\Rep:Reputation',
+        //                 'type' => self::TO_MANY,
+        //                 'conditions' => 
+        //                     [
+        //                         ['post_id', '=', '$post_id']
+        //                     ],
+        //                 'primary' => true
+        //             ],
+        //     ];
 
-        // $structure->columns["lulzapps_foo"] = 42;
+
+        // $structure->columns["lulzapps_foo"] = 
+        //     [
+        //         'type' => Entity::UINT, 
+        //         'default' => 42
+        //     ];
+            
         // $structure->relations =
         //     [
         //         'Reputation' =>
