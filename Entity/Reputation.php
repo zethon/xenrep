@@ -20,7 +20,9 @@ class Reputation extends \XF\Mvc\Entity\Entity
                 'comment' => ['type' => self::STR, 'required' => true, 'maxLength' => 255],
                 'date' => ['type' => self::UINT, 'default' => time()]
             ];
+            
         $structure->getters = [];
+
         $structure->relations = 
             [
                 'Post' => 
@@ -35,6 +37,17 @@ class Reputation extends \XF\Mvc\Entity\Entity
                     ],
             ];
     
+        $structure->relations = 
+            [
+                'User' => 
+                    [
+                        'entity' => 'XF:User',
+                        'type' => self::TO_ONE,
+                        'conditions' => 'user_id',
+                        'primary' => true
+                    ],
+            ];
+
         return $structure;
     }
 }
