@@ -24,7 +24,7 @@ class Setup extends AbstractSetup
                 $table->addColumn('rep_id', 'int');
                 $table->addColumn('post_id', 'int');
                 $table->addColumn('user_id', 'int');
-                $table->addColumn('reputation', 'int');
+                $table->addColumn('reputation', 'int')->unsigned(false);
                 $table->addColumn('comment', 'varchar', 255)->setDefault('');
                 $table->addColumn('date', 'int');
                 $table->addPrimaryKey('repid');
