@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "data-quote-href=\"{{ link('posts/quote', $post) }}\">{{ phrase('reply') }}</a>",
-    "replace": "$0\n\n\t<a href=\"{{ link('posts/reputation', $post) }}\"\n\t   class=\"actionBar-action2 actionBar-action--report2\"\n\t   data-xf-click=\"overlay\">TEST</a>\n\n<h1>\n\t<b>FOO:</b><i>{$post.lulzapps_foo}</i><br/>\n\t<b>Comment:</b><i>[{$post.rep_comment}]</i>\n</h1>\n\n"
+    "replace": "$0\n\n\t<a href=\"{{ link('posts/reputation', $post) }}\"\n\t   class=\"actionBar-action2 actionBar-action--report2\"\n\t   data-xf-click=\"overlay\">TEST</a>\n\n<h1>\n\t<b>FOO:</b><i>{$post.lulzapps_foo}</i><br/>\n\t<ul>\n\t\t<xf:foreach loop=\"$post.Reputation\" value=\"$rep\">\n\t\t\t<li>Comment: [<i>{$rep.rep_id}</i>][{$rep}][{$rep.comment}]</li>\n\t\t</xf:foreach>\n\t</ul>\n</h1>\n\n"
 }

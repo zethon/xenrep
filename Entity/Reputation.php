@@ -1,6 +1,6 @@
 <?php
 
-namespace Demo\Portal\Entity;
+namespace lulzapps\Rep\Entity;
 
 use XF\Mvc\Entity\Structure;
 
@@ -17,7 +17,7 @@ class Reputation extends \XF\Mvc\Entity\Entity
                 'post_id' => ['type' => self::UINT, 'required' => true],
                 'user_id' => ['type' => self::UINT, 'required' => true],
                 'reputation' => ['type' => self::INT, 'required' => true],
-                'rep_comment' => ['type' => self::STR, 'required' => true, 'maxLength' => 255],
+                'comment' => ['type' => self::STR, 'required' => true, 'maxLength' => 255],
                 'date' => ['type' => self::UINT, 'default' => time()]
             ];
         $structure->getters = [];
