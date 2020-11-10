@@ -28,7 +28,7 @@ class Post extends XFCP_Post
 
             /** @var \XF\Service\Report\Creator $creator */
             $creator = $this->service('lulzapps\Rep:Reputation\Creator', 'post', $post);
-		    // $creator->setMessage($message);
+		    $creator->setMessage($message);
 
             return $this->redirect($returnUrl, \XF::phrase('thank_you_for_reporting_this_content'));
         }

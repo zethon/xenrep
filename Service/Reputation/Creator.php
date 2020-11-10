@@ -11,18 +11,63 @@ use XF\Report\AbstractHandler;
 
 class Creator extends \XF\Service\AbstractService
 {
+    use \XF\Service\ValidateAndSavableTrait;
+
+    protected $reputation;
+    protected $post;
+
+    protected $comment;
+    protected $commentPreparer;
+
 	public function __construct(\XF\App $app, $contentType, Entity $content)
 	{
-		parent::__construct($app);
+        parent::__construct($app);
 
-		$this->user = \XF::visitor();
-
-		// $this->createReport($contentType, $content);
-		// $this->setupComment();
-        // $this->setDefaults();
+        $postId = $content->getIdentifierValues();
+		if (!$postId || count($postId) != 1)
+		{
+			throw new \InvalidArgumentException("Entity does not have an ID or does not have a simple key");
+        }
+        $postId = intval(reset($postId));
         
-        print('<pre>');
-        print_r($app);
-        print('</pre>');
+        $this->reputation = $this->em()->create('lulzapps\Rep:Reputation');
+		if (!$this->reputation)
+		{
+			throw new \InvalidArgumentException("OH SNAP!");
+        }
+
+        $this->reputation = $this->_em()->getNewReputation();
+        $this->reputation->post_id = $postId;
+        
+        $user = \XF::visitor();
+        $this->reputation->user_id = $user->user_id;
+
+        $this->reputation->reputation = 10;
+        $this->reputation->date = \XF::$time;
+
+        // $this->commentPreparer = $this->service('XF:Report\CommentPreparer', $this->comment);
+    }
+    
+    public function setMessage($message, $format = true)
+    {
+        $this->reputation->comment = "THIS IS A TEST";
+        $this->reputation->save();
+    }
+
+    protected function _validate()
+	{
+        return true;
+    }
+    
+    protected function _save()
+	{
+        $reputation = $this->reputation;
+
+		$db = $this->db();
+		$db->beginTransaction();
+		$reputation->save(true, false);
+		$db->commit();
+
+		return $reputation;
 	}
 }
