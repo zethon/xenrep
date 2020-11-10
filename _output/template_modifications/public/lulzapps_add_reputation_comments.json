@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<div class=\"js-historyTarget message-historyTarget toggleTarget\" data-href=\"trigger-href\"></div>",
-    "replace": "$0\n\t<xf:foreach loop=\"$post.Reputation\" value=\"$rep\">\n\t\t<div class=\"messageNotice messageNotice--highlighted\">\n\t\t\t<b>{$rep.User.username}</b> ({$rep.reputation}): {$rep.comment}\n\t\t</div>\n\t</xf:foreach>"
+    "replace": "$0\n\t<xf:foreach loop=\"$post.Reputation\" value=\"$rep\">\n\t\t<div class=\"reactionsBar js-reactionsList is-active\">\n\t\t\t<a href=\"{{ link('members', $rep.User) }}\"><b>{$rep.User.username}</b></a> ({$rep.reputation}): {$rep.comment}\n\t\t</div>\n\t</xf:foreach>"
 }
