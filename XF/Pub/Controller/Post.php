@@ -20,6 +20,16 @@ class Post extends XFCP_Post
 
         if ($this->request->isPost())
         {
+            $message = $this->request->filter('message', 'str');
+            if (!$message)
+            {
+                throw $this->exception($this->error(\XF::phrase('please_enter_reason_for_reporting_this_message')));
+            }
+
+            /** @var \XF\Service\Report\Creator $creator */
+            $creator = $this->service('lulzapps\Rep:Reputation\Creator', 'post', $post);
+		    // $creator->setMessage($message);
+
             return $this->redirect($returnUrl, \XF::phrase('thank_you_for_reporting_this_content'));
         }
 
