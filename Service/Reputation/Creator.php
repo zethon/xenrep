@@ -36,7 +36,6 @@ class Creator extends \XF\Service\AbstractService
 			throw new \InvalidArgumentException("OH SNAP!");
         }
 
-        $this->reputation = $this->_em()->getNewReputation();
         $this->reputation->post_id = $postId;
         
         $user = \XF::visitor();
@@ -44,19 +43,17 @@ class Creator extends \XF\Service\AbstractService
 
         $this->reputation->reputation = 10;
         $this->reputation->date = \XF::$time;
-
-        // $this->commentPreparer = $this->service('XF:Report\CommentPreparer', $this->comment);
     }
     
     public function setMessage($message, $format = true)
     {
         $this->reputation->comment = "THIS IS A TEST";
-        $this->reputation->save();
+        // $this->reputation->save();
     }
 
     protected function _validate()
 	{
-        return true;
+        return [];
     }
     
     protected function _save()
