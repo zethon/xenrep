@@ -13,7 +13,7 @@ class Reputation extends \XF\Mvc\Entity\Entity
         $structure->primaryKey = 'rep_id';
         $structure->columns = 
             [
-                'rep_id' => ['type' => self::UINT, 'nullable' => true, 'autoIncrement' => true],
+                'rep_id' => ['type' => self::UINT, 'nullable' => true, 'autoIncrement' => true, 'required' => false],
                 'post_id' => ['type' => self::UINT, 'required' => true],
                 'user_id' => ['type' => self::UINT, 'required' => true],
                 'reputation' => ['type' => self::INT, 'required' => true],
