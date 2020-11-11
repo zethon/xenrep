@@ -4,6 +4,6 @@
     "execution_order": 10,
     "enabled": true,
     "action": "str_replace",
-    "find": "<ul class=\"message-attribution-opposite message-attribution-opposite--list\">",
-    "replace": "$0\n<li>\n\t<a href=\"{{ link('posts/reputation', $post) }}\"\n\t   class=\"actionBar-action2 actionBar-action--report2\"\n\t   data-xf-click=\"overlay\">\n\t\t<xf:fa icon=\"fa-comment-medical\"/>\n\t</a>\n</li>\n"
+    "find": "<xf:if is=\"$thread.canReply()\">",
+    "replace": "<a href=\"{{ link('posts/reputation', $post) }}\"\n   class=\"actionBar-action2 actionBar-action--report2\"\n   data-xf-click=\"overlay\">\n\t<xf:fa icon=\"fa-comment-medical\"/> Rep\n</a>\n\n$0\n"
 }

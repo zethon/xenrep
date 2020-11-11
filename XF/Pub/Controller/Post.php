@@ -72,7 +72,7 @@ class Post extends XFCP_Post
 
         $viewParams = [
             'confirmUrl' => $confirmUrl,
-            'content' => $post
+            'post' => $post
         ];
         return $this->view('XF:Report\RepView', 'lulzapps_reputation_submit_overlay', $viewParams);
     }

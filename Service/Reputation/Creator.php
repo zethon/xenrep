@@ -44,12 +44,6 @@ class Creator extends \XF\Service\AbstractService
         $this->reputation->reputation = 10;
         $this->reputation->date = \XF::$time;
     }
-    
-    public function setMessage($message, $format = true)
-    {
-        $this->reputation->comment = "THIS IS A TEST";
-        // $this->reputation->save();
-    }
 
     protected function _validate()
 	{
