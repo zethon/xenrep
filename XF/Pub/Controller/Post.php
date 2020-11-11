@@ -33,9 +33,24 @@ class Post extends XFCP_Post
             }
             $postId = intval(reset($postId));
 
-            $reputation = $this->em()->create('lulzapps\Rep:Reputation');
+            $user = \XF::visitor();
 
-            $form = $this->formAction();
+            $finder = $this->finder('lulzapps\Rep:Reputation');
+            $finder->where('post_id', $postId);
+            $finder->where('user_id', $user->user_id);
+            $existing = $finder->fetchOne();
+            if ($existing)
+            {
+                throw $this->exception($this->error('You already commented on this post'));
+            }
+
+            $finder = $this->finder("XF:Post");
+            $finder->where('post_id', $postId);
+            $post = $finder->fetchOne();
+            if ($post->user_id == $user->user_id)
+            {
+                throw $this->exception($this->error('You cannot comment on your own post'));
+            }
 
             $input = $this->filter([
                 'post_id' => 'uint',
@@ -44,19 +59,15 @@ class Post extends XFCP_Post
             ]);
 
             $input['post_id'] = $postId;
+            $input['user_id'] = $user->user_id;
             $input['reputation'] = 123;
 
-            $user = \XF::visitor();
-            $input['user_id'] = $user->user_id;    
+            $reputation = $this->em()->create('lulzapps\Rep:Reputation');
 
+            $form = $this->formAction();
             $form->basicEntitySave($reputation, $input)->run();
 
-            // /** @var \XF\Service\Report\Creator $creator */
-            // $creator = $this->service('lulzapps\Rep:Reputation\Creator', 'post', $post);
-            // $creator->setMessage($message);
-            // $creator->save();
-
-            return $this->redirect($returnUrl, \XF::phrase('thank_you_for_reporting_this_content'));
+            return $this->redirect($returnUrl, "Your feedback has been saved");
         }
 
         $viewParams = [

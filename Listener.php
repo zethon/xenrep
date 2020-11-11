@@ -12,11 +12,11 @@ class Listener
 {
     public static function postEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &$structure)
     {
-        $structure->columns['lulzapps_foo'] = 
-            [
-                'type' => Entity::UINT, 
-                'default' => 42
-            ];
+        // $structure->columns['lulzapps_foo'] = 
+        //     [
+        //         'type' => Entity::UINT, 
+        //         'default' => 42
+        //     ];
             
         $structure->relations['Reputation'] =
             [
