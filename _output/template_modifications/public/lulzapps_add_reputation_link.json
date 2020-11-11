@@ -5,5 +5,5 @@
     "enabled": true,
     "action": "str_replace",
     "find": "<xf:if is=\"$thread.canReply()\">",
-    "replace": "<a href=\"{{ link('posts/reputation', $post) }}\"\n   class=\"actionBar-action2 actionBar-action--report2\"\n   data-xf-click=\"overlay\">\n\t<xf:fa icon=\"fa-comment-medical\"/> Rep\n</a>\n\n$0\n"
+    "replace": "<xf:if is=\"$post.canRep()\">\n\t<a href=\"{{ link('posts/reputation', $post) }}\"\n\t   class=\"actionBar-action2 actionBar-action--report2\"\n\t   data-xf-click=\"overlay\">\n\t\t<xf:fa icon=\"fa-comment-medical\"/> Rep\n\t</a>\n</xf:if>\n\n$0\n"
 }

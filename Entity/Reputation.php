@@ -50,16 +50,4 @@ class Reputation extends \XF\Mvc\Entity\Entity
 
         return $structure;
     }
-
-	public function getNewReputation()
-	{
-		$reputation = $this->_em->create('lulzapps\Rep:Reputation');
-
-		$reputation->rep_id = $this->_getDeferredValue(function()
-		{
-			return $this->rep_id;
-		}, 'save');
-
-		return $reputation;
-	}
 }
