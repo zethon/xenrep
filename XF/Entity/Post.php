@@ -7,6 +7,7 @@ class Post extends XFCP_Post
 	public function canRep()
 	{
         $user = \XF::visitor();
+        if ($user->user_id == 0) return false;
         if ($this->user_id == $user->user_id) return false;
 
         $finder = $this->finder('lulzapps\Rep:Reputation');
