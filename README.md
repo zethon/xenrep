@@ -11,9 +11,9 @@ In early 2019 I switched to Xenforo and the rep functionality was lost. This add
 
 # Links that Helped
 
-This is my first Xenforo addon. Previously I had written multiple addon for vBulletin 3.x, but this is the first addon I've written for any message board software in a few years.
+This is my first Xenforo addon. Previously I had written multiple addons for vBulletin 3.x, but this is the first addon I've written for any message board years.
 
-Along this journey of learning I thought it might be helpful to keep track of some of the links I found useful when searching for foundmental information required for just about any Xenforo addon.
+I thought it would be helpful to keep track of some of the links I found useful when searching for foundmental information about writing Xenforo addons. These are some of those links:
 
 ### Displaying a View 
 
