@@ -2,7 +2,7 @@
 
 This plugin is based off the original reputation functionality that existed for years on my message board [AMB](https://www.anothermessageboard.com). 
 
-For many years, AMB ran vBulletin 3.x, which had a feature that allowed users to rate posts and leave a comment with their rating. Originally these comments were only viewable to the person who made the post, however some time around 2006 I installed an addon that displayed the comments directly in the post. This functionality became quite popular on AMB was known as "rep". 
+AMB ran vBulletin 3.x for several years which had a feature that allowed users to rate posts and leave a comment with their rating. Originally these comments were only viewable to the person who made the post, however some time around 2006 I installed an addon that displayed the comments directly in the post. This functionality became quite popular on AMB was known as "rep". 
 
 In early 2019 I switched AMB over to Xenforo and the rep functionality was lost. This addon recaptures the essence of the AMB rep functionality.
 
