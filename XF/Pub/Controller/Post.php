@@ -11,6 +11,38 @@ class Post extends XFCP_Post
         return $this->message('Hello world!111');
     }
 
+    protected function createRepAlert(\XF\Entity\Post $post, \XF\Entity\User $fromUser)
+    {
+        $finder = $this->finder("XF:User");
+        $finder->where('user_id', $post->user_id);
+        $toUser = $finder->fetchOne();
+        if (!$toUser)
+        {
+            // perhaps the user was deleted?
+            return;
+        }
+
+        $extra['info'] = 42;
+        $extra['alert_text'] = 'This is alert text!';
+
+        $alertRepo = \XF::app()->repository('XF:UserAlert');
+
+        $alertRepo->alert($toUser, 
+            $fromUser->user_id, 
+            $fromUser->username, 
+            'lulzapps_reputation', 
+            $toUser->user_id, 
+            'notify',
+            $extra);
+
+        // $alertRepo->alert($toUser, 
+        //     $fromUser->user_id, 
+        //     $fromUser->username, 
+        //     'user', 
+        //     $toUser->user_id, 
+        //     'upgrade_end');
+    }
+
     public function actionReputation(ParameterBag $params) 
     {
         $post = $this->assertViewablePost($params->post_id);
@@ -60,12 +92,14 @@ class Post extends XFCP_Post
 
             $input['post_id'] = $postId;
             $input['user_id'] = $user->user_id;
-            $input['reputation'] = 123;
+            $input['reputation'] = 0;
 
             $reputation = $this->em()->create('lulzapps\Rep:Reputation');
 
             $form = $this->formAction();
             $form->basicEntitySave($reputation, $input)->run();
+
+            $this->createRepAlert($post, $user);
 
             return $this->redirect($returnUrl, "Your feedback has been saved");
         }

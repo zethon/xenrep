@@ -1,4 +1,9 @@
 {
+    "public/alert_lulzapps_reputation_notify.html": {
+        "version_id": 10000,
+        "version_string": "0.1 Alpha",
+        "hash": "a9e6f565e6a8593ed21334c8d95ed989"
+    },
     "public/lulzapps_reputation_submit_overlay.html": {
         "version_id": 10000,
         "version_string": "0.1 Alpha",

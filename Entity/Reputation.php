@@ -23,29 +23,23 @@ class Reputation extends \XF\Mvc\Entity\Entity
             
         $structure->getters = [];
 
-        $structure->relations = 
+        $structure->relations['Post'] = 
             [
-                'Post' => 
+                'entity' => 'XF:Post',
+                'type' => self::TO_ONE,
+                'conditions' => 
                     [
-                        'entity' => 'XF:Post',
-                        'type' => self::TO_MANY,
-                        'conditions' => 
-                            [
-                                ['post_id', '=', '$post_id']
-                            ],
-                        'primary' => true
+                        ['post_id', '=', '$post_id']
                     ],
+                'primary' => true
             ];
     
-        $structure->relations = 
+        $structure->relations['User'] = 
             [
-                'User' => 
-                    [
-                        'entity' => 'XF:User',
-                        'type' => self::TO_ONE,
-                        'conditions' => 'user_id',
-                        'primary' => true
-                    ],
+                'entity' => 'XF:User',
+                'type' => self::TO_ONE,
+                'conditions' => 'user_id',
+                'primary' => true
             ];
 
         return $structure;
