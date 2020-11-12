@@ -4,6 +4,11 @@
         "version_string": "0.1 Alpha",
         "hash": "a9e6f565e6a8593ed21334c8d95ed989"
     },
+    "public/alert_post_reputation.html": {
+        "version_id": 10000,
+        "version_string": "0.1 Alpha",
+        "hash": "f697df074821ba1e4adc305c71a2fb20"
+    },
     "public/lulzapps_reputation_submit_overlay.html": {
         "version_id": 10000,
         "version_string": "0.1 Alpha",
