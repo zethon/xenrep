@@ -33,6 +33,36 @@ class Post extends XFCP_Post
         );
     }
 
+    public function actionRepuationReact(ParameterBag $params)
+    {
+        // $reactionRepo = $this->repository('XF:Reaction');
+        // $reactionFinder = $reactionRepo->findReactionsForList();
+        // $viewParams = [
+		// 	'reactions' => $reactionFinder->fetch()
+		// ];
+		// return $this->view('XF:Reaction\List', 'reaction_list', $viewParams);
+
+        $reactionId = $this->filter('reaction_id', 'uint');
+        $reactionId = intval($reactionId);
+        return $this->message("You selected id [$reactionId]");
+
+        // $viewParams =
+        //     [
+        //         'activeReactionId' => $reactionId,
+        //         'listOnly' => true,
+        //         'title' => 'This is the title!',
+        //         'id' => 1
+        //     ];
+
+        // $viewParams = 
+        //     [
+        //         'reaction_id' => $_reactionId
+        //     ];
+
+        // // return $this->view('XF:Reaction\Listing', 'reaction_list', $viewParams);
+        // return $this->view('XF:Reaction\Display', 'lulazpps_reaction_display', $viewParams);
+    }
+
     public function actionReputation(ParameterBag $params) 
     {
         $post = $this->assertViewablePost($params->post_id);
@@ -42,6 +72,10 @@ class Post extends XFCP_Post
 
         if ($this->request->isPost())
         {
+            // $reactionId = $this->filter('reaction_id', 'uint');
+            // $reactionId = intval($reactionId);
+            // return $this->message("You selected id [$reactionId]");
+
             $message = $this->request->filter('comment', 'str');
             if (!$message)
             {
@@ -82,7 +116,11 @@ class Post extends XFCP_Post
 
             $input['post_id'] = $postId;
             $input['user_id'] = $user->user_id;
-            $input['reputation'] = 0;
+            
+            $reactionId = $this->filter('reaction_id', 'uint');
+            $input['reputation'] = intval($reactionId);
+
+            print('This is [' . $input['reputation'] . ']');
 
             $reputation = $this->em()->create('lulzapps\Rep:Reputation');
 
@@ -98,6 +136,7 @@ class Post extends XFCP_Post
             'confirmUrl' => $confirmUrl,
             'post' => $post
         ];
+
         return $this->view('XF:Report\RepView', 'lulzapps_reputation_submit_overlay', $viewParams);
     }
 }

@@ -3,8 +3,8 @@
 <xf:form action="{$confirmUrl}" class="block" ajax="true" data-skip-overlay-redirect="false">
 	<div class="block-container">
 		<div class="block-body">
-			<xf:textarearow name="comment" autosize="true" autofocus="autofocus"
-				label="Comment" />
+            <xf:react content="{$post}" link="posts/react" list="< .js-post | .js-reactionsList" />
+			<xf:textarearow name="comment" autosize="true" autofocus="autofocus" label="Comment" />
 		</div>
 		<xf:submitrow submit="Submit" data-ajax-redirect="1" />
 	</div>
