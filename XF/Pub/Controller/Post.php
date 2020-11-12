@@ -22,9 +22,6 @@ class Post extends XFCP_Post
             return;
         }
 
-        $extra['info'] = 42;
-        $extra['alert_text'] = 'This is alert text!';
-
         $alertRepo = \XF::app()->repository('XF:UserAlert');
 
         $alertRepo->alertFromUser(
@@ -32,24 +29,8 @@ class Post extends XFCP_Post
             $fromUser,
             'post',
             $post->post_id,
-            'reputation',
-            $extra
+            'reputation'
         );
-
-        // $alertRepo->alert($toUser, 
-        //     $fromUser->user_id, 
-        //     $fromUser->username, 
-        //     'lulzapps_reputation', 
-        //     $toUser->user_id, 
-        //     'notify',
-        //     $extra);
-
-        // $alertRepo->alert($toUser, 
-        //     $fromUser->user_id, 
-        //     $fromUser->username, 
-        //     'user', 
-        //     $toUser->user_id, 
-        //     'upgrade_end');
     }
 
     public function actionReputation(ParameterBag $params) 
