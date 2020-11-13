@@ -1,0 +1,9 @@
+{
+    "template": "account_wrapper",
+    "description": "This is a description",
+    "execution_order": 10,
+    "enabled": true,
+    "action": "str_replace",
+    "find": "<xf:if is=\"$xf.visitor.canViewBookmarks()\">",
+    "replace": "<a class=\"blockLink {{ $pageSelected == 'repreceived' ? 'is-selected' : '' }}\" href=\"{{ link('repboard/repreceived') }}\">\n    Reputation Received\n</a>\n<a class=\"blockLink {{ $pageSelected == 'repgiven' ? 'is-selected' : '' }}\" href=\"{{ link('repboard/repgiven') }}\">\n    Reputation Given\n</a>\n<xf:if is=\"1==0\">"
+}

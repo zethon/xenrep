@@ -1,6 +1,6 @@
 {
     "template": "post_macros",
-    "description": "",
+    "description": "The link to leave rep",
     "execution_order": 10,
     "enabled": true,
     "action": "str_replace",

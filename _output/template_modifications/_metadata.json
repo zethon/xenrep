@@ -1,8 +1,11 @@
 {
+    "public/lulzapps_add_reputation_board_links.json": {
+        "hash": "78810c35f38a5eb5ea473b80ace94605"
+    },
     "public/lulzapps_add_reputation_comments.json": {
-        "hash": "847138e84bf29fdec53887e7d591c1fa"
+        "hash": "a3e22780fc7e6c4c8587982f08d2bad5"
     },
     "public/lulzapps_add_reputation_link.json": {
-        "hash": "7a3c6d92919050016488f6d2cadc1bab"
+        "hash": "55aed52bed68d469bbe007a78edceee1"
     }
 }
